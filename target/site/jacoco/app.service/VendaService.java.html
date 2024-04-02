@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>VendaService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">App</a> &gt; <a href="index.source.html" class="el_package">app.service</a> &gt; <span class="el_source">VendaService.java</span></div><h1>VendaService.java</h1><pre class="source lang-java linenums">package app.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import app.entity.Produto;
+import app.entity.Venda;
+import app.repository.VendaRepository;
+import jakarta.validation.constraints.NotBlank;
+
+@Service
+<span class="fc" id="L15">public class VendaService {</span>
+	
+		@Autowired
+		private VendaRepository repository;
+		
+		public String save(Venda obj) {
+<span class="fc" id="L21">			obj.setValorTotal(this.calcularValorTotal(obj.getProdutos()));</span>
+			
+<span class="fc" id="L23">			this.repository.save(obj);</span>
+<span class="fc" id="L24">			return &quot;Venda salva com sucesso.&quot;;</span>
+		}
+		
+		public List&lt;Venda&gt; listAll(){
+<span class="fc" id="L28">			return this.repository.findAll();</span>
+		}
+		
+		
+		public String update(long id, Venda obj) {
+<span class="fc" id="L33">			obj.setId(id);</span>
+<span class="fc" id="L34">			obj = this.verificarStatus(obj);</span>
+<span class="fc" id="L35">			obj.setValorTotal(this.calcularValorTotal(obj.getProdutos()));</span>
+<span class="fc" id="L36">			this.repository.save(obj);</span>
+<span class="fc" id="L37">			return &quot;Sucesso!&quot;;</span>
+		}
+		
+		
+		public Venda findById(long id) {
+<span class="fc" id="L42">			Venda obj = this.repository.findById(id).get();</span>
+<span class="fc" id="L43">			return obj;</span>
+		}
+		
+		
+		public String delete(long id) {
+<span class="fc" id="L48">			this.repository.deleteById(id);</span>
+<span class="fc" id="L49">			return &quot;Sucesso!&quot;;</span>
+		}	
+		
+		
+		public List&lt;Venda&gt; findByLowerPreco(double valor){
+<span class="fc" id="L54">			return this.repository.findByLowerPreco(valor);</span>
+		}
+		
+		
+		public List&lt;Venda&gt; findByValorTotal (double valor){
+<span class="fc" id="L59">			return this.repository.findByValorTotal(valor);</span>
+		}
+		
+		
+		public List&lt;Venda&gt; findByEnderecoEntrega (String endereco){
+<span class="fc" id="L64">			return this.repository.findByEnderecoEntrega(endereco);</span>
+		}
+		
+		public double calcularValorTotal(List&lt;Produto&gt; produto) {
+<span class="fc" id="L68">			double soma = 0;</span>
+			
+<span class="fc bfc" id="L70" title="All 2 branches covered.">			for(int i=0; i&lt;produto.size();i++) {</span>
+<span class="fc" id="L71">				soma += produto.get(i).getValor();</span>
+			}
+			
+<span class="fc" id="L74">			return soma;</span>
+		}
+		
+		public Venda verificarStatus(Venda obj) {
+<span class="fc bfc" id="L78" title="All 2 branches covered.">			if(obj.getStatus().equals(&quot;Cancelado&quot;))</span>
+<span class="fc" id="L79">				obj.setProdutos(new ArrayList&lt;&gt;());</span>
+				
+<span class="fc" id="L81">			return obj;</span>
+		}
+	}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
