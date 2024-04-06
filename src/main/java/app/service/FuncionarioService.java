@@ -16,7 +16,7 @@ public class FuncionarioService {
 		
 		public String save(Funcionario obj) {
 			this.repository.save(obj);
-			return obj.getNome() + " Funcionário salvo com sucesso.";
+			return "Salvo com sucesso!";
 		}
 		
 		public List<Funcionario> listAll(){
