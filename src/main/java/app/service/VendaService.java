@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import app.entity.Produto;
 import app.entity.Venda;
 import app.repository.VendaRepository;
-import jakarta.validation.constraints.NotBlank;
 
 @Service
 public class VendaService {

@@ -15,23 +15,23 @@ import app.repository.FuncionarioRepository;
 		private FuncionarioRepository repository;
 		
 		public String save(Funcionario obj) {
-<span class="nc" id="L18">			this.repository.save(obj);</span>
-<span class="nc" id="L19">			return obj.getNome() + &quot; Funcionário salvo com sucesso.&quot;;</span>
+<span class="fc" id="L18">			this.repository.save(obj);</span>
+<span class="fc" id="L19">			return &quot;Salvo com sucesso!&quot;;</span>
 		}
 		
 		public List&lt;Funcionario&gt; listAll(){
-<span class="nc" id="L23">			return this.repository.findAll();</span>
+<span class="fc" id="L23">			return this.repository.findAll();</span>
 		}
 		
 		public String update(long id, Funcionario obj) {
-<span class="nc" id="L27">			obj.setId(id);</span>
-<span class="nc" id="L28">			this.repository.save(obj);</span>
-<span class="nc" id="L29">			return &quot;Sucesso!&quot;;</span>
+<span class="fc" id="L27">			obj.setId(id);</span>
+<span class="fc" id="L28">			this.repository.save(obj);</span>
+<span class="fc" id="L29">			return &quot;Sucesso!&quot;;</span>
 		}
 		
 		public Funcionario findById(long id) {
-<span class="nc" id="L33">			Funcionario obj = this.repository.findById(id).get();</span>
-<span class="nc" id="L34">			return obj;</span>
+<span class="fc" id="L33">			Funcionario obj = this.repository.findById(id).get();</span>
+<span class="fc" id="L34">			return obj;</span>
 		}
 		
 		public String delete(long id) {

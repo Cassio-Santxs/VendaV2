@@ -29,8 +29,8 @@ import app.service.FuncionarioService;
 	@PostMapping(&quot;/save&quot;)
 	public ResponseEntity&lt;String&gt; save(@RequestBody Funcionario obj){
 		try {
-<span class="nc" id="L32">			String msg = this.service.save(obj);</span>
-<span class="nc" id="L33">			return new ResponseEntity&lt;String&gt;(msg, HttpStatus.CREATED);</span>
+<span class="fc" id="L32">			String msg = this.service.save(obj);</span>
+<span class="fc" id="L33">			return new ResponseEntity&lt;String&gt;(msg, HttpStatus.CREATED);</span>
 <span class="nc" id="L34">		} catch (Exception e) {</span>
 <span class="nc" id="L35">			return new ResponseEntity&lt;String&gt;(&quot;Aconteceu algo de errado: &quot;+ e.getMessage(), HttpStatus.BAD_REQUEST);</span>
 		}
@@ -39,8 +39,8 @@ import app.service.FuncionarioService;
 	@PutMapping(&quot;/update/{id}&quot;)
 	public ResponseEntity&lt;String&gt; update(@RequestBody Funcionario obj, @PathVariable int id){
 		try {
-<span class="nc" id="L42">			String msg = this.service.update(id, obj);</span>
-<span class="nc" id="L43">			return new ResponseEntity&lt;String&gt;(msg, HttpStatus.OK);</span>
+<span class="fc" id="L42">			String msg = this.service.update(id, obj);</span>
+<span class="fc" id="L43">			return new ResponseEntity&lt;String&gt;(msg, HttpStatus.OK);</span>
 <span class="nc" id="L44">		} catch (Exception e) {</span>
 <span class="nc" id="L45">			return new ResponseEntity&lt;String&gt;(&quot;Não foi possivel atualizar a lista. &quot;+e.getMessage(), HttpStatus.BAD_REQUEST);</span>
 		}
@@ -49,8 +49,8 @@ import app.service.FuncionarioService;
 	@GetMapping(&quot;/listAll&quot;)
 	public ResponseEntity&lt;List&lt;Funcionario&gt;&gt; listAll(){
 		try {
-<span class="nc" id="L52">			List&lt;Funcionario&gt; lista = this.service.listAll();</span>
-<span class="nc" id="L53">			return new ResponseEntity&lt;&gt;(lista, HttpStatus.OK);</span>
+<span class="fc" id="L52">			List&lt;Funcionario&gt; lista = this.service.listAll();</span>
+<span class="fc" id="L53">			return new ResponseEntity&lt;&gt;(lista, HttpStatus.OK);</span>
 <span class="nc" id="L54">		} catch (Exception e) {</span>
 <span class="nc" id="L55">			return new ResponseEntity&lt;&gt;(null, HttpStatus.BAD_REQUEST);</span>
 		}
@@ -59,8 +59,8 @@ import app.service.FuncionarioService;
 	@GetMapping(&quot;/findById/{id}&quot;)
 	public ResponseEntity&lt;Funcionario&gt;findById(@PathVariable long id){
 		try {
-<span class="nc" id="L62">			Funcionario obj = this.service.findById(id);</span>
-<span class="nc" id="L63">			return new ResponseEntity&lt;Funcionario&gt;(obj, HttpStatus.OK);</span>
+<span class="fc" id="L62">			Funcionario obj = this.service.findById(id);</span>
+<span class="fc" id="L63">			return new ResponseEntity&lt;Funcionario&gt;(obj, HttpStatus.OK);</span>
 <span class="nc" id="L64">		} catch (Exception e) {</span>
 <span class="nc" id="L65">			return new ResponseEntity&lt;&gt;(null, HttpStatus.BAD_REQUEST);</span>
 		}
